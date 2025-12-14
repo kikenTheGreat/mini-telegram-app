@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Telegram Mini App UI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+</head>
+<body>
+
+  <div id="app" class="app-shell">
+
+    <div id="splash" class="screen splash active">
+      <div class="splash-inner">
+        <div class="splash-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" width="221" height="82" viewBox="0 0 221 82" fill="none">
+            <path d="M50.8893 62.3872L44.7549 52.4173L40.7985 34.6434L54.9063 55.1881L50.8893 62.3872Z" fill="#1678F7"/>
+            <path d="M3.38789 25.3149L0.036377 18.745L63.1101 18.8297L59.7344 26.0409L25.2756 25.4359L38.4638 49.5014L48.5425 30.7112H56.7217C49.8843 42.8071 38.7905 63.1979 38.7905 63.1979H37.8346L16.806 25.3149H3.38789Z" fill="#00EEFF"/>
+            <g filter="url(#filter0_d_30_6127)">
+              <path d="M3.66622 24.7696L0.00012207 18.7562L62.965 18.7804L59.0811 25.3624L25.566 24.9147L38.7542 48.9803L48.5184 30.6982H56.2015L38.355 63.0155L17.3868 24.9147L3.66622 24.7696Z" fill="white"/>
+            </g>
+            <path d="M24.2586 63.6578L6.48468 31.3768H14.6275L28.5296 56.3377L24.2586 63.6578Z" fill="#00EEFF"/>
+            <path d="M24.3071 63.2102L6.81146 31.3648H14.6155L28.3361 56.0474L24.3071 63.2102Z" fill="url(#paint0_linear_30_6127)"/>
+            <path d="M50.9016 62.1694L33.5027 30.9411L41.1253 30.7475L54.7612 55.1397L50.9016 62.1694Z" fill="url(#paint1_linear_30_6127)"/>
+            <rect x="69.3173" y="30.5376" width="24.0132" height="5.26004" fill="white"/>
+            <rect x="139.07" y="30.5376" width="25.1567" height="5.48874" transform="rotate(90 139.07 30.5376)" fill="white"/>
+            <path d="M192.357 30.5361L206.65 30.5361C206.65 30.5361 210.195 31.1065 212.253 35.7961C214.312 40.4858 208.48 45.9732 208.48 45.9732L214.426 55.4641L208.251 55.4641L202.534 46.2019L192.357 46.2019L192.357 41.1705L205.164 41.1705C205.164 41.1705 207.087 39.7922 207.222 38.3118C207.336 37.054 205.621 35.7961 205.621 35.7961L192.357 35.7961L192.357 30.5361Z" fill="white"/>
+            <rect x="168.801" y="30.5376" width="19.4393" height="5.48874" fill="#00E9FF"/>
+            <rect x="168.801" y="40.6003" width="19.4393" height="5.48874" fill="#00E9FF"/>
+            <rect x="168.801" y="50.4341" width="19.4393" height="5.48874" fill="#00E9FF"/>
+            <path d="M141.929 55.3509L148.447 45.8602L151.992 50.6628L148.904 55.5798L141.929 55.3509Z" fill="white"/>
+            <path d="M149.019 30.4229L154.164 37.6272L159.092 30.4232L165.256 30.4232L157.366 42.5442L166.057 55.5799L159.092 55.5799L142.844 30.766L149.019 30.4229Z" fill="white"/>
+            <path d="M105.794 47.1177L111.055 30.6554L114.599 30.6554L122.718 55.9229L117.916 55.9226L112.77 40.4858L107.624 55.9229L103.393 55.9226L94.9313 30.6554L100.649 30.6554L105.794 47.1177Z" fill="white"/>
+            <path d="M84.0944 39.5241L83.9816 55.7655L78.5927 55.7281L78.7055 39.4867L84.0944 39.5241Z" fill="white"/>
+            <path d="M130.494 30.6523L124.891 47.918L121.689 40.5997L124.891 30.6515L130.494 30.6523Z" fill="white"/>
+            <defs>
+              <filter id="filter0_d_30_6127" x="0.00012207" y="18.7562" width="62.9648" height="51.2593" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dy="7"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.66 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_30_6127"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_30_6127" result="shape"/>
+              </filter>
+              <linearGradient id="paint0_linear_30_6127" x1="11.9053" y1="31.3769" x2="25.3113" y2="60.4879" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#17DCFF"/>
+                <stop offset="1" stop-color="#004089"/>
+              </linearGradient>
+              <linearGradient id="paint1_linear_30_6127" x1="51.7001" y1="55.902" x2="36.3617" y2="30.7475" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#16D2F7"/>
+                <stop offset="1" stop-color="#00448D"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <header class="topbar" id="topbar">
+      <div class="topbar-left">
+        <div class="top-logo">
+         <svg xmlns="http://www.w3.org/2000/svg" width="221" height="82" viewBox="0 0 221 82" fill="none">
+  <path d="M50.8893 62.3872L44.7549 52.4173L40.7985 34.6434L54.9063 55.1881L50.8893 62.3872Z" fill="#1678F7"/>
+  <path d="M3.38789 25.3149L0.036377 18.745L63.1101 18.8297L59.7344 26.0409L25.2756 25.4359L38.4638 49.5014L48.5425 30.7112H56.7217C49.8843 42.8071 38.7905 63.1979 38.7905 63.1979H37.8346L16.806 25.3149H3.38789Z" fill="#00EEFF"/>
+  <g filter="url(#filter0_d_30_6127)">
+    <path d="M3.66622 24.7696L0.00012207 18.7562L62.965 18.7804L59.0811 25.3624L25.566 24.9147L38.7542 48.9803L48.5184 30.6982H56.2015L38.355 63.0155L17.3868 24.9147L3.66622 24.7696Z" fill="white"/>
+  </g>
+  <path d="M24.2586 63.6578L6.48468 31.3768H14.6275L28.5296 56.3377L24.2586 63.6578Z" fill="#00EEFF"/>
+  <path d="M24.3071 63.2102L6.81146 31.3648H14.6155L28.3361 56.0474L24.3071 63.2102Z" fill="url(#paint0_linear_30_6127)"/>
+  <path d="M50.9016 62.1694L33.5027 30.9411L41.1253 30.7475L54.7612 55.1397L50.9016 62.1694Z" fill="url(#paint1_linear_30_6127)"/>
+  <rect x="69.3173" y="30.5376" width="24.0132" height="5.26004" fill="white"/>
+  <rect x="139.07" y="30.5376" width="25.1567" height="5.48874" transform="rotate(90 139.07 30.5376)" fill="white"/>
+  <path d="M192.357 30.5361L206.65 30.5361C206.65 30.5361 210.195 31.1065 212.253 35.7961C214.312 40.4858 208.48 45.9732 208.48 45.9732L214.426 55.4641L208.251 55.4641L202.534 46.2019L192.357 46.2019L192.357 41.1705L205.164 41.1705C205.164 41.1705 207.087 39.7922 207.222 38.3118C207.336 37.054 205.621 35.7961 205.621 35.7961L192.357 35.7961L192.357 30.5361Z" fill="white"/>
+  <rect x="168.801" y="30.5376" width="19.4393" height="5.48874" fill="#00E9FF"/>
+  <rect x="168.801" y="40.6003" width="19.4393" height="5.48874" fill="#00E9FF"/>
+  <rect x="168.801" y="50.4341" width="19.4393" height="5.48874" fill="#00E9FF"/>
+  <path d="M141.929 55.3509L148.447 45.8602L151.992 50.6628L148.904 55.5798L141.929 55.3509Z" fill="white"/>
+  <path d="M149.019 30.4229L154.164 37.6272L159.092 30.4232L165.256 30.4232L157.366 42.5442L166.057 55.5799L159.092 55.5799L142.844 30.766L149.019 30.4229Z" fill="white"/>
+  <path d="M105.794 47.1177L111.055 30.6554L114.599 30.6554L122.718 55.9229L117.916 55.9226L112.77 40.4858L107.624 55.9229L103.393 55.9226L94.9313 30.6554L100.649 30.6554L105.794 47.1177Z" fill="white"/>
+  <path d="M84.0944 39.5241L83.9816 55.7655L78.5927 55.7281L78.7055 39.4867L84.0944 39.5241Z" fill="white"/>
+  <path d="M130.494 30.6523L124.891 47.918L121.689 40.5997L124.891 30.6515L130.494 30.6523Z" fill="white"/>
+  <defs>
+    <filter id="filter0_d_30_6127" x="0.00012207" y="18.7562" width="62.9648" height="51.2593" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="7"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.66 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_30_6127"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_30_6127" result="shape"/>
+    </filter>
+    <linearGradient id="paint0_linear_30_6127" x1="11.9053" y1="31.3769" x2="25.3113" y2="60.4879" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#17DCFF"/>
+      <stop offset="1" stop-color="#004089"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear_30_6127" x1="51.7001" y1="55.902" x2="36.3617" y2="30.7475" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#16D2F7"/>
+      <stop offset="1" stop-color="#00448D"/>
+    </linearGradient>
+  </defs>
+</svg>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="topchip" type="button" id="btnClose">✕ <span class="ms-1">Close</span></button>
+        <button class="topchip icon" type="button" id="btnMenu">⋯</button>
+      </div>
+    </header>
+
+    <main class="main">
+
+      <section id="page-home" class="screen screen-page active" data-page="home">
+        <div class="wheel-wrap">
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <canvas id="wheelCanvas" width="320" height="320"></canvas>
+          <div class="wheel-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="34" viewBox="0 0 35 34" fill="none">
+  <path d="M15.9832 0.818359C16.5216 -0.272754 18.0782 -0.272754 18.6169 0.818359L22.8259 9.3457C23.0397 9.77899 23.4531 10.0798 23.9314 10.1494L27.0515 10.6025L33.3416 11.5166C34.5458 11.6918 35.0265 13.1711 34.155 14.0205L27.3455 20.6582C26.9996 20.9954 26.8421 21.4819 26.9236 21.958L28.531 31.3311C28.7367 32.5303 27.4773 33.4453 26.4001 32.8789L17.9832 28.4531C17.5557 28.2283 17.0446 28.2283 16.6169 28.4531L8.19995 32.8789C7.12281 33.4453 5.86344 32.5306 6.06909 31.3311L7.08472 25.4092V25.4082L7.67651 21.958C7.75805 21.4819 7.60052 20.9954 7.25464 20.6582L0.445068 14.0205C-0.426422 13.1711 0.0542694 11.6915 1.25854 11.5166L10.6697 10.1494C11.1477 10.0798 11.5614 9.779 11.7751 9.3457L15.9832 0.818359Z" fill="white"/>
+</svg>
+          </div>
+        </div>
+
+        <div class="mt-3 d-flex justify-content-center">
+          <button id="btnSpin" class="btn btn-glow px-5">SPIN</button>
+        </div>
+
+        <div class="card-soft mt-3">
+          <div class="card-soft-title">Prize History</div>
+          <div id="historyList" class="history"></div>
+        </div>
+      </section>
+
+      <section id="page-tasks" class="screen screen-page" data-page="tasks">
+        <div class="page-head text-center">
+          <h2 class="page-title">Tasks</h2>
+          <p class="page-sub">
+            Complete Tasks and earn rewards , invite friends for<br>
+            each active friend you will earn a bonus
+          </p>
+          <div class="seg-tabs mt-3" role="tablist">
+            <button class="seg-btn active" id="tabTasks" type="button" data-tasktab="tasks">Tasks</button>
+            <button class="seg-btn" id="tabFriendsFromTasks" type="button" data-tasktab="friends">Friends</button>
+          </div>
+        </div>
+
+        <div id="panelTasks" class="tab-panel active">
+          <div id="tasksList" class="vstack gap-3 mt-3"></div>
+        </div>
+
+        <div id="panelFriendsInTasks" class="tab-panel">
+          <div class="invite-card mt-3">
+            <div class="invite-left">
+              <div class="invite-logo"><span class="mini-mark">TW</span></div>
+              <div class="invite-meta">
+                <div class="invite-title">Invite Friends</div>
+                <div class="invite-reward">+$$$$$</div>
+              </div>
+            </div>
+            <button class="btn btn-light btn-sm invite-copy" id="btnCopyInviteTasks" type="button">Copy Link</button>
+          </div>
+
+          <div class="invite-linkbox mt-3">
+            <div class="invite-linklabel">Your referral link</div>
+            <div class="invite-linkrow">
+              <input id="inviteLinkTasks" class="form-control invite-input" readonly />
+              <button class="btn btn-glow invite-copy2" id="btnCopyInviteTasks2" type="button">Copy</button>
+            </div>
+            <div class="invite-hint mt-2">Invited friends: <span id="inviteCountTasks">0</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="page-invite" class="screen screen-page" data-page="invite">
+        <div class="page-head text-center">
+          <h2 class="page-title">Tasks</h2>
+          <p class="page-sub">
+            Complete Tasks and earn rewards , invite friends for<br>
+            each active friend you will earn a bonus
+          </p>
+          <div class="seg-tabs mt-3" role="tablist">
+            <button class="seg-btn" id="tabTasksFromInvite" type="button" data-tasktab="tasks">Tasks</button>
+            <button class="seg-btn active" id="tabFriends" type="button" data-tasktab="friends">Friends</button>
+          </div>
+        </div>
+
+        <div class="invite-card mt-3">
+          <div class="invite-left">
+            <div class="invite-logo"><span class="mini-mark">TW</span></div>
+            <div class="invite-meta">
+              <div class="invite-title">Invite Friends</div>
+              <div class="invite-reward">+$$$$$</div>
+            </div>
+          </div>
+          <button class="btn btn-light btn-sm invite-copy" id="btnCopyInvite" type="button">Copy Link</button>
+        </div>
+
+        <div class="invite-linkbox mt-3">
+          <div class="invite-linklabel">Your referral link</div>
+          <div class="invite-linkrow">
+            <input id="inviteLink" class="form-control invite-input" readonly />
+            <button class="btn btn-glow invite-copy2" id="btnCopyInvite2" type="button">Copy</button>
+          </div>
+          <div class="invite-hint mt-2">Invited friends: <span id="inviteCount">0</span></div>
+        </div>
+      </section>
+
+      <section id="page-leaderboard" class="screen screen-page" data-page="leaderboard">
+        <div class="page-head text-center">
+          <h2 class="page-title">Leaderboard</h2>
+          <p class="page-sub">Invite leaderboard & monthly wager leaderboard</p>
+          <div class="seg-tabs mt-3" role="tablist">
+            <button class="seg-btn active" id="tabLbInvite" type="button" data-lbtab="invite">Invite</button>
+            <button class="seg-btn" id="tabLbWager" type="button" data-lbtab="wager">Wager</button>
+          </div>
+        </div>
+
+        <div id="panelLbInvite" class="tab-panel active">
+          <div id="leaderboardInviteList" class="vstack gap-2 mt-3"></div>
+        </div>
+
+        <div id="panelLbWager" class="tab-panel">
+          <div class="invite-hint mt-3">Showing current month wager volume</div>
+          <div id="leaderboardWagerList" class="vstack gap-2 mt-2"></div>
+        </div>
+      </section>
+
+      <section id="page-support" class="screen screen-page" data-page="support">
+        <div class="page-head text-center">
+          <h2 class="page-title">Customer Service</h2>
+          <p class="page-sub">Contact our support via Telegram</p>
+        </div>
+
+        <div class="support-card mt-3">
+          <div class="support-icon">✈</div>
+          <div class="support-meta">
+            <div class="support-title">Telegram Support</div>
+            <div class="support-sub" id="supportHandle">@USERNAME</div>
+          </div>
+          <button class="btn btn-glow" id="btnOpenSupport" type="button">Open</button>
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="bottom-nav" id="bottomNav">
+      <button class="nav-item active" data-nav="tasks" aria-label="Task">
+        <span class="nav-ico">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 21 23" fill="none">
+            <path d="M16.3125 2.29102C17.7276 2.37041 18.6213 2.59588 19.2617 3.23633C20.2503 4.22484 20.25 5.8161 20.25 8.99805V15.748C20.25 18.9299 20.2502 20.5212 19.2617 21.5098C18.2732 22.4983 16.6819 22.498 13.5 22.498H6.75C3.56802 22.498 1.9768 22.4983 0.988281 21.5098C-0.000192932 20.5212 0 18.93 0 15.748V8.99805C0 5.8161 -0.000227814 4.22484 0.988281 3.23633C1.62874 2.59589 2.52237 2.37041 3.9375 2.29102V2.8125C3.9375 4.67646 5.44854 6.1875 7.3125 6.1875H12.9375C14.8015 6.1875 16.3125 4.67646 16.3125 2.8125V2.29102ZM4.5 16.5938C4.03403 16.5938 3.65628 16.9716 3.65625 17.4375C3.65625 17.9035 4.03401 18.2812 4.5 18.2812H5.0625C5.52849 18.2812 5.90625 17.9035 5.90625 17.4375C5.90622 16.9716 5.52847 16.5938 5.0625 16.5938H4.5ZM8.4375 16.5938C7.97155 16.5938 7.59378 16.9716 7.59375 17.4375C7.59375 17.9035 7.97152 18.2812 8.4375 18.2812H15.75C16.216 18.2812 16.5938 17.9035 16.5938 17.4375C16.5937 16.9716 16.216 16.5938 15.75 16.5938H8.4375ZM4.5 12.6562C4.03403 12.6563 3.65628 13.0341 3.65625 13.5C3.65625 13.966 4.03401 14.3437 4.5 14.3438H5.0625C5.52849 14.3438 5.90625 13.966 5.90625 13.5C5.90622 13.0341 5.52847 12.6562 5.0625 12.6562H4.5ZM8.4375 12.6562C7.97155 12.6563 7.59378 13.0341 7.59375 13.5C7.59375 13.966 7.97152 14.3437 8.4375 14.3438H15.75C16.216 14.3438 16.5938 13.966 16.5938 13.5C16.5937 13.0341 16.216 12.6562 15.75 12.6562H8.4375ZM4.5 8.71875C4.03403 8.71875 3.65628 9.09655 3.65625 9.5625C3.65625 10.0285 4.03401 10.4062 4.5 10.4062H5.0625C5.52849 10.4062 5.90625 10.0285 5.90625 9.5625C5.90622 9.09655 5.52847 8.71875 5.0625 8.71875H4.5ZM8.4375 8.71875C7.97155 8.71875 7.59378 9.09655 7.59375 9.5625C7.59375 10.0285 7.97152 10.4062 8.4375 10.4062H15.75C16.216 10.4062 16.5938 10.0285 16.5938 9.5625C16.5937 9.09655 16.216 8.71875 15.75 8.71875H8.4375ZM12.9375 0C13.8695 0 14.625 0.755516 14.625 1.6875V2.8125C14.625 3.74448 13.8695 4.5 12.9375 4.5H7.3125C6.38052 4.5 5.625 3.74448 5.625 2.8125V1.6875C5.625 0.755516 6.38052 0 7.3125 0H12.9375Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-label">Task</span>
+      </button>
+
+      <button class="nav-item" data-nav="invite" aria-label="Invite">
+        <span class="nav-ico">
+          <svg viewBox="0 0 24 24" width="22" height="22">
+            <path fill="currentColor" d="M16 11c1.66 0 3-1.34 3-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 3-1.34 3-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h7v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+          </svg>
+        </span>
+        <span class="nav-label">Invite</span>
+      </button>
+
+      <button class="nav-item nav-center" data-nav="home" aria-label="Home">
+        <span class="nav-ico nav-ico-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="51" height="56" viewBox="0 0 51 56" fill="none">
+            <path d="M42.5319 24.7334L25.1999 31.668L7.86792 24.7334L17.3599 21.4107L19.8333 22.4094L20.5519 25.6947C20.8413 27.0014 21.9799 27.916 23.3146 27.916C24.1453 27.916 24.9293 27.5427 25.4706 26.908L27.6359 24.3414L30.9773 24.668C31.0799 24.6774 31.1733 24.6774 31.2666 24.6774C32.2839 24.6774 33.2266 24.1267 33.7213 23.2307C33.9733 22.7734 34.0853 22.2694 34.0666 21.7747L42.5319 24.7334Z" fill="white"/>
+            <path d="M25.2653 34.3746L25.2 34.4773V34.2906L25.2653 34.3746Z" fill="white"/>
+            <path d="M6.53333 25.2L0 32.6667L19.6 42L25.2 32.6667L6.53333 25.2Z" fill="white"/>
+            <path d="M25.2 32.6667L31.7333 42L50.4 32.6667L43.8666 25.2L25.2 32.6667Z" fill="white"/>
+            <path d="M25.2 34.2906V56L6.53333 46.6666V36.8106L19.964 43.204L25.2 34.2906Z" fill="white"/>
+            <path d="M43.8666 36.9786V48.5333L25.2 56V34.2906L25.2653 34.3746L31.4346 43.1944L43.8666 36.9786Z" fill="white"/>
+            <path d="M22.9455 10.5348L25.8185 13.0858C26.0533 13.2942 26.3757 13.374 26.6805 13.2986L30.4105 12.3781C31.1782 12.1887 31.8299 12.9617 31.5133 13.6864L29.9749 17.207C29.8491 17.4947 29.8732 17.8258 30.0388 18.0925L32.067 21.3556C32.4844 22.0272 31.9505 22.8858 31.1635 22.8088L27.3399 22.4336C27.0274 22.4031 26.7197 22.5281 26.5174 22.768L24.0405 25.7052C23.5307 26.3098 22.5491 26.0673 22.3794 25.295L21.5546 21.5425C21.4872 21.2359 21.2732 20.9821 20.9822 20.8638L17.4234 19.4159C16.691 19.118 16.6182 18.1095 17.3002 17.7093L20.6143 15.7652C20.8852 15.6063 21.0604 15.3244 21.083 15.0111L21.3602 11.179C21.4174 10.3906 22.3542 10.0098 22.9455 10.5348Z" fill="white"/>
+            <path d="M42.1196 5.91364L42.5051 8.87954C42.5366 9.12197 42.6852 9.33338 42.9029 9.44468L45.5646 10.8085C46.1124 11.0892 46.1005 11.8762 45.5445 12.1404L42.843 13.4235C42.6222 13.5282 42.4671 13.7352 42.4283 13.9765L41.9537 16.9293C41.856 17.5371 41.1039 17.7691 40.6809 17.3218L38.6257 15.149C38.4577 14.9714 38.2132 14.8879 37.9717 14.9254L35.0167 15.3867C34.4087 15.4817 33.9555 14.8379 34.2502 14.2975L35.6815 11.6716C35.7984 11.4569 35.8024 11.1986 35.692 10.9805L34.3403 8.31278C34.0622 7.76374 34.5342 7.13398 35.1392 7.24715L38.079 7.79711C38.3193 7.84215 38.5662 7.76584 38.7396 7.59341L40.8592 5.48338C41.2955 5.04891 42.0403 5.30324 42.1196 5.91364Z" fill="white"/>
+            <path d="M9.46333 8.63335L10.8384 10.6155C10.9508 10.7775 11.1356 10.8738 11.3328 10.8731L13.745 10.8643C14.2415 10.8624 14.5246 11.4308 14.224 11.8258L12.7638 13.7459C12.6446 13.903 12.6101 14.1085 12.6717 14.2957L13.4256 16.5872C13.5807 17.0588 13.1278 17.5038 12.6591 17.34L10.3817 16.5445C10.1955 16.4794 9.98949 16.5102 9.83036 16.6267L7.88389 18.0519C7.48326 18.3452 6.92022 18.0519 6.93119 17.5553L6.98392 15.1436C6.98812 14.9464 6.89526 14.76 6.73542 14.6445L4.77846 13.2338C4.37573 12.9435 4.48072 12.3172 4.95626 12.1742L7.26626 11.4791C7.45502 11.4224 7.60389 11.2761 7.66409 11.0885L8.40096 8.79156C8.55239 8.31906 9.18029 8.22549 9.46333 8.63335Z" fill="white"/>
+            <path d="M27.3431 0.313395L27.9829 2.10376C28.0351 2.25006 28.156 2.36136 28.3063 2.40126L30.1438 2.88939C30.522 2.98972 30.6207 3.48043 30.3111 3.71936L28.8059 4.88113C28.6829 4.97609 28.6145 5.12543 28.6229 5.28059L28.7265 7.17899C28.7478 7.56982 28.3119 7.81529 27.9887 7.59456L26.4188 6.52216C26.2905 6.43442 26.1274 6.41553 25.9823 6.47153L24.2087 7.15682C23.8438 7.29776 23.4753 6.95919 23.5855 6.58352L24.1203 4.75909C24.1639 4.60999 24.1315 4.449 24.0335 4.32836L22.8337 2.85346C22.5868 2.54989 22.7952 2.09489 23.1862 2.08369L25.0868 2.02862C25.2422 2.02419 25.3852 1.94346 25.4696 1.81303L26.5017 0.21609C26.7145 -0.112677 27.2115 -0.0552718 27.3431 0.313395Z" fill="white"/>
+          </svg>
+        </span>
+      </button>
+
+      <button class="nav-item" data-nav="leaderboard" aria-label="Rank">
+        <span class="nav-ico">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 27 27" fill="none">
+            <path d="M15.2236 4.5H12.7764C11.7943 4.5 11 5.45042 11 6.61134V26.5H17V6.61134C17 5.45042 16.2057 4.5 15.2236 4.5ZM15.3846 12.5435L14 11.676L12.6154 12.5435L12.8784 10.7128L11.7567 9.41795L13.3023 9.15004L13.9946 7.48521L14.6869 9.15004L16.2326 9.41795L15.1109 10.7128L15.3846 12.5435Z" fill="currentColor"/>
+            <path d="M23.9919 12.5H19.0143C18.4571 12.5 18 12.958 18 13.5304V26.5H25V13.5304C25 12.9643 24.5492 12.5 23.9919 12.5ZM23.1154 22.022L21.5 21.157L19.8846 22.022L20.1914 20.1965L18.8828 18.9053L20.686 18.6381L21.4937 16.978L22.3014 18.6381L24.1047 18.9053L22.7961 20.1965L23.1154 22.022Z" fill="currentColor"/>
+            <path d="M8.95433 12.5H4.05187C3.47585 12.5 3 12.9771 3 13.5686V26.5H9.99994V13.5686C10.0062 12.9771 9.53661 12.5 8.95433 12.5ZM8.1216 22.022L6.50623 21.157L4.89086 22.022L5.19766 20.1965L3.88908 18.9053L5.69228 18.6381L6.49997 16.978L7.30765 18.6381L9.11086 18.9053L7.80228 20.1965L8.1216 22.022Z" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="nav-label">Rank</span>
+      </button>
+
+      <button class="nav-item" data-nav="support" aria-label="Support">
+        <span class="nav-ico">
+          <svg xmlns="http://www.w3.org/2000/svg"
+     width="22" height="22"
+     viewBox="0 0 24 25"
+     fill="none">
+  <path d="M11.9014 0C17.3112 0 21.8066 3.91446 22.71 9.06543L22.7861 9.56738C23.416 10.2248 23.8027 11.1172 23.8027 12.0996C23.8027 13.082 23.416 13.9743 22.7861 14.6318C22.1431 19.6581 18.0999 23.6214 13.0361 24.1416C12.8965 24.6369 12.4413 25 11.9014 25C11.2504 25 10.7227 24.4723 10.7227 23.8213C10.7227 23.1702 11.2503 22.6426 11.9014 22.6426C12.441 22.6426 12.8952 23.0052 13.0352 23.5C17.5441 23.0078 21.1812 19.6159 22.043 15.2285C21.6835 15.4473 21.2833 15.606 20.8564 15.6904C20.8345 15.7453 20.8121 15.8 20.7891 15.8545C20.3031 17.0033 19.6082 18.0353 18.7227 18.9209C17.8371 19.8065 16.8051 20.5014 15.6562 20.9873C14.4663 21.4906 13.2031 21.7461 11.9014 21.7461C10.5996 21.7461 9.33645 21.4906 8.14648 20.9873C6.99764 20.5014 5.96565 19.8065 5.08008 18.9209C4.1946 18.0354 3.49958 17.0033 3.01367 15.8545C2.99064 15.8 2.96831 15.7453 2.94629 15.6904C1.26648 15.3583 0 13.8769 0 12.0996C3.448e-05 11.1172 0.38673 10.2248 1.0166 9.56738C1.70713 4.17097 6.31719 4.84144e-05 11.9014 0ZM11.9014 4.6709C9.91703 4.67093 8.05157 5.44355 6.64844 6.84668C5.24531 8.24981 4.47269 10.1152 4.47266 12.0996C4.47266 14.084 5.24537 15.9494 6.64844 17.3525C8.05157 18.7557 9.91703 19.5293 11.9014 19.5293C13.8858 19.5293 15.7511 18.7557 17.1543 17.3525C18.5575 15.9493 19.3311 14.084 19.3311 12.0996C19.331 10.1153 18.5574 8.24981 17.1543 6.84668C15.7511 5.4436 13.8857 4.6709 11.9014 4.6709ZM8.60352 9.61328C9.52462 9.61328 10.2714 10.3602 10.2715 11.2812C10.2715 12.2024 9.5247 12.9492 8.60352 12.9492C7.68255 12.949 6.93652 12.2023 6.93652 11.2812C6.93664 10.3603 7.68262 9.61353 8.60352 9.61328ZM14.0195 10.1025C14.6709 9.45117 15.7275 9.45117 16.3789 10.1025C17.0298 10.7539 17.0299 11.8097 16.3789 12.4609C15.7275 13.1123 14.6709 13.1123 14.0195 12.4609C13.3683 11.8097 13.3684 10.7539 14.0195 10.1025ZM11.9014 0.637695C6.87825 0.637778 2.69273 4.22099 1.75977 8.9707C2.11924 8.75189 2.51944 8.59319 2.94629 8.50879C2.96827 8.45397 2.9906 8.39925 3.01367 8.34473C3.4996 7.19592 4.19455 6.16389 5.08008 5.27832C5.96565 4.39275 6.99764 3.69784 8.14648 3.21191C9.33638 2.70863 10.5997 2.45314 11.9014 2.45312C13.203 2.45312 14.4663 2.70868 15.6562 3.21191C16.805 3.69782 17.8371 4.39281 18.7227 5.27832C19.6082 6.16389 20.3031 7.19588 20.7891 8.34473C20.8121 8.39925 20.8344 8.45397 20.8564 8.50879C21.2832 8.59317 21.6836 8.75197 22.043 8.9707C21.11 4.22097 16.9246 0.637695 11.9014 0.637695Z"
+        fill="currentColor"/>
+</svg>
+
+        </span>
+        <span class="nav-label">Support</span>
+      </button>
+    </nav>
+
+    <div id="winOverlay" class="win-overlay" aria-hidden="true">
+      <div class="win-card">
+        <div class="win-title">YOU WIN</div>
+        <div id="winPrize" class="win-prize"></div>
+        <div class="win-sub">To claim it, go to Customer Service</div>
+        <button id="btnCloseWin" class="btn btn-glow w-100 mt-3">Close</button>
+      </div>
+      <div id="confetti" class="confetti"></div>
+    </div>
+
+    <div id="toast" class="toast-mini"></div>
+
+  </div>
+
+  <script>
+    window.SUPABASE_URL = "https://zvzzwmlpimznzyaayvxt.supabase.co";
+    window.SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp2enp3bWxwaW16bnp5YWF5dnh0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUxNjk1MDQsImV4cCI6MjA4MDc0NTUwNH0.-LWqxtf715XZaGpMeoM0Unv4znveIXUUX_9wqRiulWA";
+  </script>
+  <script defer src="script.js"></script>
+</body>
+</html>
