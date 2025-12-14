@@ -2,9 +2,9 @@
 const express = require('express');
 const app = express();
 
-const BOT_TOKEN = '8543749708:AAFuygd1vrOU9Aa55BoJdfh-qSBCYLpT4Rw';
+const BOT_TOKEN = process.env.BOT_TOKEN;
 const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}`;
-const APP_URL = process.env.APP_URL || 'https://ec7cac89858b.ngrok-free.app';
+const APP_URL = process.env.APP_URL || '';
 
 app.use(express.json());
 app.use(express.static(__dirname));
@@ -82,7 +82,7 @@ async function sendMessage(chatId, text, replyMarkup) {
   }
 }
 
-const PORT = 5500;
+const PORT = process.env.PORT || 5500;
 app.listen(PORT, () => {
   console.log(`🤖 Bot server running on http://localhost:${PORT}`);
   console.log(`📡 Webhook at ${APP_URL}/webhook`);
