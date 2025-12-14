@@ -312,6 +312,69 @@ async function recordInviteShare(){
   }
 }
 
+async function canSpinToday(){
+  if(!supa) return true; // Allow spin if Supabase unavailable (dev mode)
+  
+  const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+  const { data, error } = await supa
+    .from("spins")
+    .select("created_at")
+    .eq("user_id", user.id)
+    .gte("created_at", `${today}T00:00:00Z`)
+    .limit(1);
+    
+  if(error){
+    console.error("[Spin] Error checking daily limit:", error);
+    return true; // Allow on error
+  }
+  
+  return !data || data.length === 0;
+}
+
+async function getNextSpinTime(){
+  if(!supa) return null;
+  
+  const { data, error } = await supa
+    .from("spins")
+    .select("created_at")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+    .limit(1);
+    
+  if(error || !data || data.length === 0) return null;
+  
+  const lastSpin = new Date(data[0].created_at);
+  const nextSpin = new Date(lastSpin);
+  nextSpin.setHours(24, 0, 0, 0); // Next midnight after last spin
+  
+  return nextSpin > new Date() ? nextSpin : null;
+}
+
+async function updateSpinButton(){
+  const canSpin = await canSpinToday();
+  
+  if(!canSpin){
+    const nextTime = await getNextSpinTime();
+    btnSpin.disabled = true;
+    
+    if(nextTime){
+      const now = new Date();
+      const diff = nextTime - now;
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      btnSpin.textContent = `Next spin in ${hours}h ${minutes}m`;
+      
+      // Update every minute
+      setTimeout(updateSpinButton, 60000);
+    }else{
+      btnSpin.textContent = "SPIN (Available soon)";
+    }
+  }else{
+    btnSpin.disabled = false;
+    btnSpin.textContent = "SPIN";
+  }
+}
+
 async function recordSpin(prize){
   if(!supa) return;
   console.log("[Spin] Recording:", prize.label);
@@ -326,6 +389,8 @@ async function recordSpin(prize){
     console.error("[Spin] Failed to save:", error);
   }else{
     console.log("[Spin] Saved:", data);
+    // Update button state after spin
+    await updateSpinButton();
   }
 }
 
@@ -648,8 +713,16 @@ function drawWheel(){
   ctx.restore();
 }
 
-function spin(){
+async function spin(){
   if(spinning) return;
+  
+  // Check daily limit before spinning
+  const canSpin = await canSpinToday();
+  if(!canSpin){
+    showToast("You can only spin once per day!");
+    return;
+  }
+  
   spinning = true;
   btnSpin.disabled = true;
 
@@ -843,8 +916,11 @@ async function init(){
   wireTabs();
   wireNav();
   wireSupport();
+  
+  // Check daily spin limit and update button
+  await updateSpinButton();
 
-   bootstrapRemote();
+  bootstrapRemote();
 
   setTimeout(()=>{
     elSplash.classList.remove("active");
